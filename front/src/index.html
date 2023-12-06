@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+        <label for="user">User:</label> <input type="text" class="form#login" />
+        <button onclick="requestAPI()">Clique!</button>
+        <div class="hello"></div>
+    <script>
+        const requestAPI = () => {
+            const userBody = document.getElementsByClassName("form#login")[0].value;
+
+            console.log(userBody);
+
+            fetch("https://a401-177-23-202-250.ngrok-free.app/hello", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: userBody
+                })
+            })
+                .then(res => res.json())
+                .then((response) => {
+                    const helloElement = document.getElementsByClassName("hello")[0];
+
+                    helloElement.innerHTML = response.data;
+                });
+        };
+    </script>
+</body>
+</html>
