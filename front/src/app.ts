@@ -13,12 +13,12 @@ const io = new Server(server);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.set("views", path.join(__dirname, '../public'));
+app.use(cors());
 
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
 
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
 app.use('/', (request: express.Request, response: express.Response) => {
     response.render('index.html')

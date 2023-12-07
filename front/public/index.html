@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Chat Rocketseat</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -20,21 +20,19 @@
     </form>
 
     <script>
-      const socket = io("http://5e59-177-23-202-250.ngrok-free.app");
+      const socket = io("bac5-177-23-202-250.ngrok-free.app");
       const inputMessage = document.getElementsByClassName("message")[0];
       const chat = document.getElementById("chat");
 
       function renderMessage(message) {
-        document.getElementsByClassName("messages")[0]
-            .innerHTML = 
-                '<div class="message"><strong>' +
-                    message.author +
-                    "</strong>: " +
-                    message.message +
-                    "</div>"
-            
+        $(".messages").append(
+          '<div class="message"><strong>' +
+            message.author +
+            "</strong>: " +
+            message.message +
+            "</div>"
+        );
       }
-
       socket.on("previousMessages", function (messages) {
         for (message of messages) {
           renderMessage(message);
