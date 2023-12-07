@@ -2,3 +2,11 @@
     background-color: rgb(4, 4, 255);
     border-radius: 15px;
 }
+
+body{
+    background-color: white;
+}
+
+#chat.username{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
